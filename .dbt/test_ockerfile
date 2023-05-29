@@ -1,0 +1,11 @@
+#[Dockerfile]
+FROM fishtownanalytics/dbt:1.0.0
+# Install pinned python versions to image
+COPY requirements.txt /tmp/pip-tmp/
+RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
+&& rm -rf /tmp/pip-tmp
+# Copy dbt code in (jaffle-shop example dir)
+WORKDIR /dbt
+COPY jaffle-shop/ ./
+# Run DBT deps to collect pinned versions of DBT packages
+RUN dbt deps --profiles-dir .

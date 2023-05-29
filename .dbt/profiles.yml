@@ -1,0 +1,10 @@
+lol-bet:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: 	lol-bet
+      dataset: dbt # You can also use "schema" here
+      threads: 1
+      keyfile: lol-bet-7c4ec8598b37.json
