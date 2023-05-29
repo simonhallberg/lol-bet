@@ -19,18 +19,25 @@ for i in range(len(teams)):
     new_row = {'id': teams[i]['id'], 'name': teams[i]['name'], 'row_num': i}
     all_teams.loc[len(all_teams)] = new_row
 
-print(all_teams)
+#print(all_teams)
 
-all_teams.loc[all_teams['name'] == 'G2 Esports']
+g2_row = all_teams.loc[all_teams['name'] == 'G2 Esports']
+
+g2_row_num = all_teams.loc[all_teams['name'] == 'G2 Esports']['row_num'].values[0]
 
 
-print(type(teams))
-g2=teams[name='G2']
+
+#print(type(teams))
+g2=teams[g2_row_num]
 print(teams)
+print(g2)
+
+df = pd.read_csv('2023_LoL_esports_match_data_from_OraclesElixir.csv')
+
+g2 = df[df['teamname'] == g2['name']]
+
+
 blueteam=metadata['blueTeamMetadata']
 redteam=metadata['redTeamMetadata']
 blueteam_team=blueteam['esportsTeamId']
 redteam_team=redteam['esportsTeamId']
-#g2=
-
-print(response.json())
